@@ -1,0 +1,45 @@
+<ui:composition template="Template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:define name="mainscreen">
+        <div id="midBodyT">
+        <div id="midDentroDoMidPQPWTF">     
+            <h:form  style="">
+                <h:inputHidden value="#{receitaBean.receita.id}"/>
+                <h:panelGrid columns="2" style="color: #fff;margin-left:180px; ">
+                    <h:panelGrid columns="2" style="margin-bottom:10px;">
+                        <p:outputLabel for="custo_receita" value="Custo da Receita: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                        <p:inputText id="custo_receita" value="#{receitaBean.receita.custoReceita}" style="margin: 5px; height: 15px!important;" required="true"  requiredMessage="locação obrigatória"/>
+   
+                        
+                        <p:outputLabel for="nome_receita" value="Nome da Receita: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                        <p:inputText id="nome_receita" value="#{receitaBean.receita.nome}" style="margin: 5px; height: 15px!important;" required="true" />
+                        
+                        <p:outputLabel for="modo_preparo" value="Modo de Preparo: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                        <p:inputTextarea rows="5" cols="50" id="modo_preparo" value="#{receitaBean.receita.modoPreparo}" queryDelay="750" minQueryLength="4"
+                                    required="true"     style='width: 220px;'/>
+ 
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="2" style="margin-bottom:10px; margin-left: 40px;">
+                        <form>
+                            <p:pickList id="pickList" value="#{receitaBean.ingredientesList}" var="ingredientesList" 
+                                        itemLabel="#{ingredientesList.nome}" itemValue="#{ingredientesList.idIngrediente}" />       
+                        </form>    
+                    </h:panelGrid>
+
+                </h:panelGrid>
+                <p:commandButton value="Cadastrar" actionListener="#{receitaBean.salvar()}"  style="width:120px; color: #4f4f4f" update="@form"/>
+                
+            </h:form> 
+        </div>
+        </div>    
+        
+    </ui:define>
+</ui:composition>

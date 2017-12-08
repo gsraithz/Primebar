@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link type="text/css" rel="stylesheet" href="css/estiloTemplate.css" /> 
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div id="midBody">
+
+            <h:form>          
+                <p:tabMenu activeIndex="#{param.section}" style="margin: 0; border: 1px red;">
+
+                    <p:menuitem value="Contatos" style="border: 1px red;" onclick="window.scrollBy(0, 700)">
+                        <f:param name="section" value="1" />
+
+                    </p:menuitem>
+
+                </p:tabMenu>            
+            </h:form>
+            <div id="oktos">
+                OKTO'S BAR
+            </div>
+        </div>
+        <h:form style="height:35px;">
+            <p:commandButton value="Login" onclick="PF('seila').show()" type="button" icon="ui-icon-arrow-1-s" style="width: 100%; "/>
+        </h:form> 
+
+
+        <p:dialog widgetVar="seila" showHeader="true" draggable="false" resizable="false">
+            <form action="j_spring_security_check" method="post">               
+                <h:outputText value="Usuario" />
+                <h:inputText id="j_username" />
+                <h:outputText value="Senha" />
+                <h:inputSecret id="j_password" />
+                <br></br>
+                <input type="submit" value="Logar" style="margin-left:250px; margin-top:7px; padding:5px;"/>
+            </form>
+        </p:dialog>
+
+        <div style="width: 100%; height: 500px; background-color: #cccccc;">
+            <div id="esquerda" style="float: left;  width: 50%; ">             
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.8455222911593!2d-49.080685900000006!3d-26.9083973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df18d52a106bd7%3A0xf7765196bfc8706b!2sOkto&#39;s+Bar!5e0!3m2!1spt-BR!2sbr!4v1444152356444" width="600" height="450" frameborder="0" style="border:0; margin: 20px;" ></iframe>            
+            </div>
+
+            <div id="direita" style="float: left;  width: 50%; height: 493px; margin-top: 20px;" >
+               
+                <h:form id="form">        
+                    <p:panel>    
+                        <h:panelGrid columns="1" id="TESTE">
+                            <h:outputLabel value="Telefone: ">(47)32373040</h:outputLabel>
+                            <br></br>
+                            <h:outputLabel value="Endereco: "> Antonio da veiga N°505 </h:outputLabel>
+                            <br></br>
+                            <h:outputLabel value="E-mail: ">oktosbar@gmail.com</h:outputLabel>
+                            <br></br>
+                            <p>Dê-nos uma sugestão: </p>
+                            <p:inputTextarea rows="5" cols="50" completeMethod="#{inputTextareaView.completeArea}" queryDelay="750" minQueryLength="4" />
+
+                            <!--<p:calendar locale="pt" showButtonPanel="true" navigator="true"
+                                id="ptCal" showOn="button"></p:calendar>-->
+
+                        </h:panelGrid>
+                        <br></br>
+                        <h:form>    
+                            <p:commandButton value="Gravar" ></p:commandButton>
+                        </h:form>
+                    </p:panel>
+                </h:form>
+                
+
+            </div>
+
+        </div>
+
+    </h:body>
+</html>

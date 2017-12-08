@@ -1,0 +1,70 @@
+<ui:composition template="Template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+
+    </h:head>
+    <ui:define name="mainscreen">
+        <title>Facelet Title</title>
+
+        <div id="midBodyT">
+            <!--<h:outputLabel style="float:right; font-size: 12px; color: #000;" value=""></h:outputLabel> -->
+            <div id="midDentroDoMidPQPWTF" style=" ">
+                <h:form>
+                    <h:inputHidden value="#{pessoaBean.pessoa.idPessoa}"/>
+                    <div class="ui-grid ui-grid-responsive" style="color: #fff;margin-left: 340px; " >
+                        <h:panelGrid columns="2" style="margin-bottom:10px; ">
+                            <h:panelGrid columns="2" style="margin-bottom:10px;">
+                                <p:outputLabel for="nome" value="Nome: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                                <p:inputText id="nome" type="text" value="#{pessoaBean.pessoa.nome}" style="margin: 5px; height: 15px!important;" required="true"/>
+
+                                <p:outputLabel for="sobrenome" value="Sobrenome: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 "/>
+                                <p:inputText id="sobrenome" value="#{pessoaBean.pessoa.sobrenome}" style="margin:5px; height: 15px!important;" />                  
+
+                                <p:outputLabel for="dat_nasc" value="Dt. Nascimento: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 "/>
+                                <p:inputText id="dat_nasc" type="data" value="#{pessoaBean.pessoa.dtNasc}" style="margin:5px; height: 18px!important;  "  />
+
+
+                                <p:outputLabel for="telefone" value="Telefone: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 " />
+                                <p:inputText id="telefone" value="#{pessoaBean.pessoa.telefone}" style="margin:5px; height: 15px!important;" required="true" />
+
+                                <p:outputLabel for="email" value="E-Mail " style="margin:5px; float: left; text-shadow: 2px 2px #303030 "/>
+                                <p:inputText id="email" value="#{pessoaBean.pessoa.email}" style="margin:5px; height: 15px!important;" />
+
+                                <p:outputLabel for="senha" value="Senha: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 "/>
+                                <p:password id="senha" value="#{pessoaBean.pessoa.senha}" style="margin:5px; height: 15px!important;" />
+
+                                
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="2" style="margin-bottom:10px; ">
+                                <p:outputLabel for="estado" value="Estado: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 "/>
+                                <p:inputText id="estado" value="#{pessoaBean.pessoa.estado}" style="margin: 5px; height: 15px!important;" />
+
+                                <p:outputLabel for="cidade" value="Cidade: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 "/>
+                                <p:inputText id="cidade" value="#{pessoaBean.pessoa.municipio}" style="margin: 5px; height: 15px!important;" />  
+
+                                <p:outputLabel for="bairro" value="Bairro: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 " />
+                                <p:inputText id="bairro" value="#{pessoaBean.pessoa.bairro}" style="margin:5px; height: 15px!important;" />  
+
+                                <p:outputLabel for="rua" value="Rua: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 "/>
+                                <p:inputText id="rua" value="#{pessoaBean.pessoa.rua}" style="margin:5px; height: 15px!important;" />  
+
+                                <p:outputLabel for="numero" value="Número:" style="margin:5px; float: left; text-shadow: 2px 2px #303030 "/>
+                                <p:inputText id="numero" type="number" value="#{pessoaBean.pessoa.numero}" style="margin:5px; height: 18px!important;" />
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </div>
+                    <p:commandButton value="Cadastrar" actionListener="#{pessoaBean.salvar()}" type="button" style="width:120px; color: #4f4f4f; " update="@form"/>
+                </h:form>
+            </div>    
+        </div>    
+    </ui:define>
+   
+
+  
+</ui:composition>

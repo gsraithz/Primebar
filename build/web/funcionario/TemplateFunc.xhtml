@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link type="text/css" rel="stylesheet" href="css/estiloTemplate.css" /> 
+
+    <h:head>
+        <title>Facelet Title</title>
+        
+        <style>
+            @font-face{
+                font-family: "marqueemoon";
+                src: url("marquee moon.ttf") format("marqueemoon");
+            }
+        </style>    
+    </h:head>
+    <h:body>
+        <div id="midBody" style="height: 500px; width: 100%; background-color:  #848484;">
+            <h:form>          
+                <p:tabMenu activeIndex="#{param.section}" style="margin: 0; border: 1px red;">
+                    <p:menuitem value="Cliente" outcome="Cliente.jsf" style="border: 1px red;">
+                        <f:param name="section" value="0"/>
+                    </p:menuitem>   
+
+                    <p:menuitem value="Produto" outcome="Produto.jsf" style="border: 1px red;">
+                        <f:param name="section" value="1" />
+                    </p:menuitem>
+                    <p:menuitem value="Receitas" outcome="Receitas.jsf" style="border: 1px red;">
+                        <f:param name="section" value="2" />
+                    </p:menuitem>
+
+                    <p:menuitem value="Ingrediente" outcome="Ingrediente.jsf" style="border: 1px red;">                        <f:param name="section" value="3" />
+                    </p:menuitem>
+
+                    <p:menuitem value="Mesas" outcome="Mesas.jsf" style="border: 1px red;">
+                        <f:param name="section" value="4"  />
+                    </p:menuitem>
+                </p:tabMenu>            
+            </h:form>
+                <div id="oktos">
+                    OKTO'S BAR
+                </div>
+        </div>
+
+            <!--PARTE DO CARDAPIO (SLIDESCREEN)-->
+            <p:notificationBar position="top" effect="slide" styleClass="top" widgetVar="bar">
+                <ui:insert name="teste">                
+                </ui:insert>
+                <h:form style="height:100px;">
+                    <p:commandButton value="Esconder" onclick="PF('bar').hide()" type="button" icon="ui-icon-arrow-1-n" style="width:100%; bottom: -400px; margin:0 !important; color: #4f4f4f"/>
+                </h:form> 
+            
+             </p:notificationBar>
+
+        
+        <h:form style="height:100px;">
+            
+            <p:commandButton value="Cardapio" onclick="PF('bar').show()" type="button" icon="ui-icon-arrow-1-s" style="width: 100%;"/>
+        </h:form> 
+        <!--<p:dialog widgetVar="seila" showHeader="false">
+            oiiiiiiiiie
+        </p:dialog>-->
+    </h:body>
+</html>

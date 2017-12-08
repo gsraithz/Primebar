@@ -1,0 +1,48 @@
+<ui:composition template="Template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:define name="mainscreen">
+        
+        <div id="midBodyT">
+        <div id="midDentroDoMidPQPWTF">
+            <h:form  style="">
+                <h:panelGrid columns="2" style="color: #fff;margin-left: 340px;">
+                    <h:panelGrid columns="2" style="margin-bottom:10px;">
+                        <p:outputLabel for="nome" value="Nome: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                        <p:inputText id="nome" value="" style="margin: 5px; height: 15px!important;" />
+                   
+                        <p:outputLabel for="descricao" value="Descricao: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                        <p:inputTextarea rows="5" cols="50" id="descricao" value="#{produtoBean.produto.descricao}" queryDelay="750" minQueryLength="4"
+                                    required="true"     style='width: 220px;'/>
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="2" style="margin-bottom:10px; ">
+                        <p:outputLabel for="valor" value="Valor: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                        <p:inputText id="valor" value="" style="margin: 5px; height: 15px!important;" />
+                       
+                            <p:outputLabel for="receita" value="Receita: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                            <h:selectOneMenu id="receita" value="#{ingredienteBean.ingrediente.idIngrediente}" required="true" label="Text 3" style="width:200px; height: 40px; ">
+                                        <p:ajax listener="#{receitaBean.receita.produto}"  />
+                                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="Bauru" itemValue="#{ingredienteBean.ingrediente.setIdIngrediente(idIngrediente)}" />
+                                        <f:selectItem itemLabel="Xsalada" itemValue="#{ingredienteBean.ingrediente.setIdIngrediente(idIngrediente)}" />
+                                        <f:selectItem itemLabel="Caipirinha" itemValue="#{ingredienteBean.ingrediente.setIdIngrediente(idIngrediente)}" />
+                                </h:selectOneMenu>
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:form>
+            <h:form>
+                <p:commandButton value="Cadastrar" onclick="" type="button" style="width:120px; color: #4f4f4f" update="@form"/>
+            </h:form>    
+        </div>
+        </div>    
+        
+        
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,83 @@
+<ui:composition template="Template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:define name="mainscreen">
+        <div id="midBodyT">    
+            <div id="midDentroDoMidPQPWTF">
+                <h:form  style="">
+                    <h:panelGrid columns="2" style="color: #fff;margin-left: 340px; ">
+                        <h:panelGrid columns="2" style="margin-bottom:10px;">
+                            <p:outputLabel for="nome" value="Nome: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                            <p:inputText id="nome" value="#{ingredienteBean.ingrediente.nome}" style="margin: 5px; height: 15px!important;" />
+                            <p:outputLabel for="descricao" value="Descricao: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                            <p:inputText id="descricao" value="#{ingredienteBean.ingrediente.descricao}" style="margin: 5px; height: 15px!important;" />          
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2" style="margin-bottom:10px; ">
+                            <p:outputLabel for="preco" value="Preço: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                            <p:inputText id="preco" value="#{ingredienteBean.ingrediente.preco}" style="margin: 5px; height: 15px!important;" />
+                            <p:outputLabel for="qtd" value="Quantidade: " style="margin:5px; float: left; text-shadow: 2px 2px #303030 ;"/>
+                            <p:inputText id="qtd" value="#{ingredienteBean.ingrediente.qtd}" style="margin: 5px; height: 15px!important;" />
+                        </h:panelGrid>
+                    </h:panelGrid>
+                    <p:commandButton value="Cadastrar" actionListener="#{ingredienteBean.salvar()}" style="width:120px; color: #4f4f4f;margin-bottom:25px;  margin-top: 15px;" update="@form"/>
+                </h:form>       
+                    <!--ESTOQUE CONTROLE-->
+                <h:form>
+                    <p:accordionPanel dynamic="true" cache="true" style="width:300px; margin-left:460px;">
+                        <p:tab title="Controle Estoque">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputLabel for="selection" value="Selecione o ingrediente: " />
+                                <h:selectOneMenu id="selection" value="#{estoqueBean.ingredienteGetted}"
+                                                 required="true" label="selection" style="margin-left: 32px; ">
+                                    <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{ingredienteBean.listar()}" var="ingrediente"
+                                                   itemValue="#{ingrediente.idIngrediente}" itemLabel="#{ingrediente.nome}"/>
+                                    <p:ajax listener="#{estoqueBean.select()}" update="@form" />
+                     
+                                
+                                </h:selectOneMenu> 
+                                
+                            </h:panelGrid>
+                            <h:form>  
+                                <p:panelGrid columns="3">
+                                    <p:outputLabel for="qtd_estoque" value="Estoque: " style="margin:5px; float: left; "/>
+                                    <p:inputText id="qtd_estoque" value="#{estoqueBean.estoque.qtdEstoque}" style="margin: 5px; height: 15px!important;" />
+                                    <p:commandButton value="Modal" type="button" onclick="PF('dlgEstoque').show();" />
+                                    
+                                    <p:outputLabel for="md_reposicao" value="Média reposição: " style="margin:5px; float: left; "/>
+                                    <p:inputText id="md_reposicao" value="#{estoqueBean.estoque.mdReposicao}" style="margin: 5px; height: 15px!important;" />
+                                </p:panelGrid>
+
+                                <p:commandButton value="Salvar" actionListener="#{estoqueBean.saveById()}" style="margin-top: 20px; padding: 5px;"/>
+
+                            </h:form>
+
+                        </p:tab>
+                    </p:accordionPanel>
+               </h:form>         
+                <!--DIALOG -->    
+                <p:dialog header="Modal Dialog" widgetVar="dlgEstoque" modal="false" height="100">
+                    <h:form>  
+                        <p:panelGrid columns="2">
+                            <p:outputLabel for="qtd_estoque" value="Estoque: " style="margin:5px; float: left; "/>
+                            <p:inputText id="qtd_estoque" value="#{estoqueBean.estoqueAdd}" style="margin: 5px; height: 15px!important;" />
+                            
+                        </p:panelGrid>
+                        
+                        <p:commandLink  actionListener="#{estoqueBean.saveEstoque()}">
+                            <p:commandButton value="Salvar" actionListener="#{estoqueBean.select()}" style="margin-top: 20px; padding: 5px;"/>    
+                        </p:commandLink>
+                    </h:form>
+                </p:dialog>
+
+            </div>
+        </div>    
+    </ui:define>
+</ui:composition>
